@@ -1,1 +1,2 @@
 class Dekor
+    отроир
