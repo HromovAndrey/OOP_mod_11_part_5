@@ -1,55 +1,35 @@
+# Завдання 4
+# Створіть базовий клас Clock, який містить атрибути
+# години та хвилини. Від цього базового класу
+# успадковуйте два класи: AnalogClock та DigitalClock.
+# Клас AnalogClock повинен мати метод display_time,
+# який виводить поточний час у форматі
+# "години:хвилини". Клас DigitalClock повинен мати
+# метод display_time, який виводить поточний час у
+# цифровому форматі "гг:хх".
+# Створіть об'єкти кожного класу та виведіть
+# поточний час за допомогою методу display_time.
+
+class Clock:
+    def __init__(self, hour, minute):
+        self.hour = hour
+        self.minute = minute
 
 
-# Завдання 3
-# Створіть базовий клас «Тварина» та похідні класи:
-# «Тигр», «Крокодил», «Кенгуру». Встановіть за допомогою
-# конструктора ім’я кожної тварини та її характеристики.
-# Створіть для кожного класу необхідні методи та поля.
-
-class Animal:
-    def __init__(self, name, species):
-        self.name = name
-        self.species = species
+class AnalogClock(Clock):
+    def display_time(self):
+        print(f"{self.hour:02d}:{self.minute:02d}")
 
 
-class Tiger(Animal):
-    def __init__(self, name):
-        super().__init__(name, "Tiger")
+class DigitalClock(Clock):
+    def display_time(self):
+        print(f"{self.hour:02d}:{self.minute:02d}")
 
-    def move(self):
-        return "Running"
+analog_clock = AnalogClock(10, 30)
+analog_clock.display_time()  # Виведе "10:30"
 
-    def sound(self):
-        return "Roar"
-
-
-class Crocodile(Animal):
-    def __init__(self, name):
-        super().__init__(name, "Crocodile")
-
-    def move(self):
-        return "Swimming"
-
-    def sound(self):
-        return "Growl"
+digital_clock = DigitalClock(14, 45)
+digital_clock.display_time()  # Виведе "14:45"
 
 
-class Kangaroo(Animal):
-    def __init__(self, name):
-        super().__init__(name, "Kangaroo")
 
-    def move(self):
-        return "Hopping"
-
-    def sound(self):
-        return "Clicking"
-
-
-tiger = Tiger("Shere Khan")
-print(f"{tiger.name} the {tiger.species} is {tiger.move()} and makes a {tiger.sound()} sound.")
-
-crocodile = Crocodile("Snappy")
-print(f"{crocodile.name} the {crocodile.species} is {crocodile.move()} and makes a {crocodile.sound()} sound.")
-
-kangaroo = Kangaroo("Joey")
-print(f"{kangaroo.name} the {kangaroo.species} is {kangaroo.move()} and makes a {kangaroo.sound()} sound.")
