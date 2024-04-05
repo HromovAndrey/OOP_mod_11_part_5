@@ -1,40 +1,55 @@
-# Завдання 2
-# Створіть клас Passport (паспорт), який міститиме
-# паспортну інформацію про громадянина заданої країни.
-# За допомогою механізму успадкування реалізуйте
-# клас ForeignPassport (закордонний паспорт), похідний
-# від Passport.
-# Нагадаємо, що закордонний паспорт містить, крім
-# паспортних даних, дані про візи і номер закордонного
-# паспорта.
-# Кожен із класів має містити необхідні методи.
-class Passport:
-    def __init__(self, name, passport_number, age, country):
+
+
+# Завдання 3
+# Створіть базовий клас «Тварина» та похідні класи:
+# «Тигр», «Крокодил», «Кенгуру». Встановіть за допомогою
+# конструктора ім’я кожної тварини та її характеристики.
+# Створіть для кожного класу необхідні методи та поля.
+
+class Animal:
+    def __init__(self, name, species):
         self.name = name
-        self.passport_number = passport_number
-        self.age = age
-        self.country = country
+        self.species = species
 
 
-class ForeignPassport(Passport):
-    def __init__(self, name, passport_number, age, country, visas):
-        super().__init__(name, passport_number, age, country)
-        self.passport_number = passport_number
-        self._visas = visas
+class Tiger(Animal):
+    def __init__(self, name):
+        super().__init__(name, "Tiger")
 
-    def show_info(self):
-        super().show_info()
-        print(f"Foreign Passport Number: {self.foreign_passport_number}")
-        print("Visa Information:")
-        for visa in self.visa_info:
-            print(f"- {visa}")
+    def move(self):
+        return "Running"
+
+    def sound(self):
+        return "Roar"
 
 
-passport = Passport("John Doe", "AB123456", "USA")
-passport.show_info()
-print()
-foreign_passport = ForeignPassport("Alice Smith", "CD789012", "UK", ["USA", "Canada"], "XYZ987654")
-foreign_passport.show_info()
+class Crocodile(Animal):
+    def __init__(self, name):
+        super().__init__(name, "Crocodile")
+
+    def move(self):
+        return "Swimming"
+
+    def sound(self):
+        return "Growl"
 
 
+class Kangaroo(Animal):
+    def __init__(self, name):
+        super().__init__(name, "Kangaroo")
 
+    def move(self):
+        return "Hopping"
+
+    def sound(self):
+        return "Clicking"
+
+
+tiger = Tiger("Shere Khan")
+print(f"{tiger.name} the {tiger.species} is {tiger.move()} and makes a {tiger.sound()} sound.")
+
+crocodile = Crocodile("Snappy")
+print(f"{crocodile.name} the {crocodile.species} is {crocodile.move()} and makes a {crocodile.sound()} sound.")
+
+kangaroo = Kangaroo("Joey")
+print(f"{kangaroo.name} the {kangaroo.species} is {kangaroo.move()} and makes a {kangaroo.sound()} sound.")
